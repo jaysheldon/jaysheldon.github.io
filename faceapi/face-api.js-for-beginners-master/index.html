@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.15.1/dist/tf.min.js"></script>
-  <script src="face-api.js"></script>
 
+  <script src="face-api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.15.1/dist/tf.min.js"></script>
 
 </head>
 <body>
-  <h1> Welcome To Face Demo [v4] </h1>
+  <h1> Welcome To Face Demo [v5] </h1>
 <ul>
 	<li> [DONE] Add eyesclosed model </li>
 	<li> Connect it into the face model </li>
@@ -89,8 +89,7 @@ async function run() {
    await faceapi.loadTinyFaceDetectorModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
    await faceapi.loadFaceLandmarkTinyModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
    
-   const model = await tf.loadModel('https://foo.bar/tfjs_artifacts/model.json');
-   const eyesclosedmodel = await tf.loadModel('https://jaysheldon.github.io/faceapi/face-api.js-for-beginners-master/eyesclosedmodel/tfjsmodel/model.json');
+   const eyesclosedmodel = await tf.loadModel('https://jaysheldon.github.io/faceapi/face-api.js-for-beginners-master/eyesclosedmodel/tfjsmodel/model.json')
 
    const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
    const videoEl = document.getElementById('inputVideo')

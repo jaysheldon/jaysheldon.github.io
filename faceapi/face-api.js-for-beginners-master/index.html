@@ -89,7 +89,8 @@ async function run() {
    await faceapi.loadTinyFaceDetectorModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
    await faceapi.loadFaceLandmarkTinyModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
    
-   const eyesclosedmodel = await tf.loadModel('https://jaysheldon.github.io/faceapi/face-api.js-for-beginners-master/eyesclosedmodel/tfjs_model/model.json');
+   const model = await tf.loadModel('https://foo.bar/tfjs_artifacts/model.json');
+   const eyesclosedmodel = await tf.loadModel('https://jaysheldon.github.io/faceapi/face-api.js-for-beginners-master/eyesclosedmodel/tfjsmodel/model.json');
 
    const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
    const videoEl = document.getElementById('inputVideo')

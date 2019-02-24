@@ -33,8 +33,6 @@
 
 // JavaScript
 
-const eyesclosedmodel = tf.loadModel('eyesclosedmodel/tfjs_model/model.json');
-
 ////////////////////////// A few helper functions ///////////////////////////////////////////   
   
 function resizeCanvasAndResults(dimensions, canvas, results) {
@@ -90,7 +88,9 @@ async function onPlay() {
 async function run() {
    await faceapi.loadTinyFaceDetectorModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
    await faceapi.loadFaceLandmarkTinyModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
-      
+   
+   const eyesclosedmodel = await tf.loadModel('eyesclosedmodel/tfjs_model/model.json');
+
    const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
    const videoEl = document.getElementById('inputVideo')
    videoEl.srcObject = stream

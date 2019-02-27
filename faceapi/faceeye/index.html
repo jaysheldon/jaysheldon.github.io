@@ -58,15 +58,11 @@ function drawLandmarks(dimensions, canvas, results, withBoxes = true) {
   
 async function onPlay() {
    const videoEl = document.getElementById('inputVideo')
-	const MODEL_URL = 'https://jaysheldon.github.io/faceapi/faceeye/web_model/web_model.pb';
-	const WEIGHTS_URL = 'https://jaysheldon.github.io/faceapi/faceeye/web_model/weights_manifest.json';
-
-	const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
-	const cat = document.getElementById('cat');
-	model.execute({input: tf.fromPixels(cat)});
+	const cat = document.getElementById('inputVideo');
+	var res = model.execute({input: tf.fromPixels(cat)});
+	console.log("post-calc");
 
 
-   
    result = await faceapi.detectSingleFace(videoEl, options).withFaceLandmarks(true)
    if (result) {
        drawLandmarks(videoEl, document.getElementById('overlay'), [result], true)
@@ -82,10 +78,11 @@ async function onPlay() {
 }
 
 async function run() {
-   await faceapi.loadTinyFaceDetectorModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
-   await faceapi.loadFaceLandmarkTinyModel('https://hpssjellis.github.io/face-api.js-for-beginners/')
-   
-   const eyesclosedmodel = await tf.loadModel('https://jaysheldon.github.io/faceapi/face-api.js-for-beginners-master/eyesclosedmodel/tfjsmodel/model.json');
+	const MODEL_URL = 'https://jaysheldon.github.io/faceapi/faceeye/web_model/tensorflowjs_model.pb';
+	const WEIGHTS_URL = 'https://jaysheldon.github.io/faceapi/faceeye/web_model/weights_manifest.json';
+
+	console.log("pre-calc");
+	const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
 
    const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
    const videoEl = document.getElementById('inputVideo')

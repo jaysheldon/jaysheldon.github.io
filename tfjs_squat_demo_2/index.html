@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+	<script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+  </head>
+  <body>
+    <center>
+		<h1>SweatNet</h1>	
+		Your Work Out: 
+		<span id="numsquat">0</span> Squats and <span id="numlunge">0</span> Lunges.
+		
+		<div id="console"></div>
+		<video autoplay playsinline muted id="webcam" width="224" height="224"></video>		
+		<br />
+		<div id="message"></div>
+
+		<br />
+		
+<!--		<table>
+		<tr><td><img src="squat.png" style="height:50px;"></td><td><span id="numsquat"></span></td></tr>
+		<tr><td><img src="lunge.png" style="height:50px;"></td> <td><span id="numlunge"></span></td></tr>
+		</table>
+-->		
+		</center>
+		
+		
+		<!-- Load index.js after the content of the page -->
+		<script src="index.js"></script>
+  </body>
+</html>
